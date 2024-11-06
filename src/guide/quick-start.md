@@ -8,8 +8,6 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 # 빠른 시작 {#quick-start}
 
-사용 사례 및 기본 설정에 따라 빌드 과정을 포함하거나 포함하지 않고 Vue를 사용할 수 있습니다.
-
 ## Try Vue Online {#try-vue-online}
 
 - Vue를 빠르게 체험해 보려면 [Playground](https://play.vuejs.org/#eNo9jcEKwjAMhl/lt5fpQYfXUQfefAMvvRQbddC1pUuHUPrudg4HIcmXjyRZXEM4zYlEJ+T0iEPgXjn6BB8Zhp46WUZWDjCa9f6w9kAkTtH9CRinV4fmRtZ63H20Ztesqiylphqy3R5UYBqD1UyVAPk+9zkvV1CKbCv9poMLiTEfR2/IXpSoXomqZLtti/IFwVtA9A==)에서 직접 사용해 보세요.
@@ -18,13 +16,12 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 - Node.js와 빌드 도구의 개념에 이미 익숙하다면, [StackBlitz](https://vite.new/vue)에서 브라우저 내에서 바로 전체 빌드 설정을 시도해 볼 수도 있습니다.
 
-
 ## Vue 애플리케이션 만들기 {#creating-a-vue-application}
 
 :::tip 전제 조건
 
 - 명령줄에 대한 친숙함
-- [Node.js](https://nodejs.org/) 버전 18.0 이상 설치
+- [Node.js](https://nodejs.org/) 버전 18.3 이상 설치
   :::
 
 이 섹션에서는 로컬 컴퓨터에서 Vue [싱글 페이지 애플리케이션](/guide/extras/ways-of-using-vue.html#single-page-application-spa)을 스캐폴드하는 방법을 소개합니다. 생성된 프로젝트는 [Vite](https://vitejs.dev)를 기반으로 빌드 설정을 사용하고 Vue [싱글 파일 컴포넌트](/guide/scaling-up/sfc)(SFC)를 사용할 수 있도록 합니다.
@@ -70,9 +67,10 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Vue Router for Single Page Application development? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Pinia for state management? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Vitest for Unit testing? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
-<span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add an End-to-End Testing Solution? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Cypress / Playwright</span></span>
-<span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add ESLint for code quality? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
+<span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add an End-to-End Testing Solution? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Cypress / Nightwatch / Playwright</span></span>
+<span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add ESLint for code quality? <span style="color:#888;">… No / <span style="color:#89DDFF;text-decoration:underline">Yes</span></span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Prettier for code formatting? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
+<span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Vue DevTools 7 extension for debugging? (experimental) <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
 <span></span>
 <span style="color:#A6ACCD;">Scaffolding project in ./<span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span>...</span>
 <span style="color:#A6ACCD;">Done.</span></code></pre></div>
@@ -82,8 +80,8 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 <VTCodeGroup>
   <VTCodeGroupTab label="npm">
 
-  ```sh
-  $ cd <your-project-name>
+  ```sh-vue
+  $ cd {{'<your-project-name>'}}
   $ npm install
   $ npm run dev
   ```
@@ -91,8 +89,8 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
   </VTCodeGroupTab>
   <VTCodeGroupTab label="pnpm">
 
-  ```sh
-  $ cd <your-project-name>
+  ```sh-vue
+  $ cd {{'<your-project-name>'}}
   $ pnpm install
   $ pnpm run dev
   ```
@@ -100,8 +98,8 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
   </VTCodeGroupTab>
   <VTCodeGroupTab label="yarn">
 
-  ```sh
-  $ cd <your-project-name>
+  ```sh-vue
+  $ cd {{'<your-project-name>'}}
   $ yarn
   $ yarn dev
   ```
@@ -109,8 +107,8 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
   </VTCodeGroupTab>
   <VTCodeGroupTab label="bun">
 
-  ```sh
-  $ cd <your-project-name>
+  ```sh-vue
+  $ cd {{'<your-project-name>'}}
   $ bun install
   $ bun run dev
   ```
@@ -162,11 +160,9 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 [Next Steps >](#next-steps)
 
-## CDN에서 Vue 사용{#using-vue-from-cdn}
+## CDN에서 Vue 사용 {#using-vue-from-cdn}
 
 스크립트 태그를 통해 CDN에서 직접 Vue를 사용할 수 있습니다:
-
-
 
 ```html
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -174,9 +170,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 여기서는 [unpkg](https://unpkg.com/)를 사용하고 있지만, [jsdelivr](https://www.jsdelivr.com/package/npm/vue) 또는 [cdnjs](https://cdnjs.com/libraries/vue)와 같이 npm 패키지를 제공하는 모든 CDN을 사용할 수도 있습니다. 물론 이 파일을 다운로드하여 직접 제공할 수도 있습니다.
 
-
 CDN에서 Vue를 사용하는 경우 "빌드 단계"가 필요하지 않습니다. 따라서 설정이 훨씬 간단해지며 정적 HTML을 향상시키거나 백엔드 프레임워크와 통합하는 데 적합합니다. 하지만 싱글 파일 컴포넌트(SFC) 구문은 사용할 수 없습니다.
-
 
 ### 글로벌 빌드 사용 {#using-the-global-build}
 
@@ -229,7 +223,7 @@ CDN에서 Vue를 사용하는 경우 "빌드 단계"가 필요하지 않습니�
 
 [Codepen demo](https://codepen.io/vuejs-examples/pen/eYQpQEG)
 
-:::팁
+:::tip
 가이드 전체에서 Composition API에 대한 많은 예제는 빌드 도구가 필요한 `<script setup>` 구문을 사용할 것입니다. 빌드 단계 없이 Composition API를 사용하려는 경우 [`setup()` 옵션](/api/composition-api-setup)의 사용법을 참조하십시오.
 :::
 
@@ -372,6 +366,8 @@ import { createApp } from 'vue'
 
 :::warning 운영 환경에서 사용
 지금까지의 예제는 Vue의 개발 빌드를 사용한 것으로, 프로덕션 환경에서 CDN의 Vue를 사용하려면 [프로덕션 배포 가이드](/guide/best-practices/production-deployment.html#without-build-tools)를 확인하시기 바랍니다.
+
+빌드 시스템 없이 Vue를 사용할 수는 있지만, 고려할 수 있는 대안적 접근 방법은 과거에 [`jquery/jquery`](https://github.com/jquery/jquery)가 사용되었거나 현재 [`alpinejs/alpine`](https://github.com/alpinejs/alpine)이 사용될 수 있는 컨텍스트에 더 적합할 수 있는 [`vuejs/petite-vue`](https://github.com/vuejs/petite-vue)를 사용하는 것입니다.
 :::
 
 ### 모듈 분할 {#splitting-up-the-modules}
@@ -380,6 +376,8 @@ import { createApp } from 'vue'
 
 ```html
 <!-- index.html -->
+<div id="app"></div>
+
 <script type="module">
   import { createApp } from 'vue'
   import MyComponent from './my-component.js'
@@ -396,7 +394,7 @@ export default {
   data() {
     return { count: 0 }
   },
-  template: `<div>count is {{ count }}</div>`
+  template: `<div>Count is: {{ count }}</div>`
 }
 ```
 
@@ -411,7 +409,7 @@ export default {
     const count = ref(0)
     return { count }
   },
-  template: `<div>count is {{ count }}</div>`
+  template: `<div>Count is: {{ count }}</div>`
 }
 ```
 
@@ -423,7 +421,7 @@ export default {
 
 로컬 HTTP 서버를 시작하려면 먼저 [Node.js](https://nodejs.org/en/)가 설치되어 있는지 확인한 다음 명령줄에서 HTML 파일이 있는 동일한 디렉토리에서 `npx serve`를 실행하십시오. 또는 올바른 MIME 유형으로 정적 파일을 서비스할 수 있는 다른 HTTP 서버를 사용할 수도 있습니다.
 
-가져온 컴포넌트의 템플릿이 JavaScript 문자열로 인라인으로 포함되어 있는 것을 알아챘을 것입니다. VSCode를 사용하는 경우 [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 확장을 설치하고 문자열을 `/*html*/` 주석으로 접두사를 붙여 문법 강조 효과를 얻을 수 있습니다.
+가져온 컴포넌트의 템플릿이 JavaScript 문자열로 인라인으로 포함되어 있는 것을 알아챘을 것입니다. VS Code를 사용하는 경우 [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 확장을 설치하고 문자열을 `/*html*/` 주석으로 접두사를 붙여 문법 강조 효과를 얻을 수 있습니다.
 
 ## Next Steps {#next-steps}
 

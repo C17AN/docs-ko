@@ -254,15 +254,15 @@ Vue에서는 "프롭(prop)"이라는 용어를 세 가지 주요 상황에서 �
 자세한 내용은 다음을 참조하세요:
 - [가이드 - provide / inject](/guide/components/provide-inject.html)
 
-## 반응형 이팩트 (Reactive Effect) {#reactive-effect}
+## 반응형 이펙트 (Reactive Effect) {#reactive-effect}
 
-반응형 이팩트는 Vue의 반응성 시스템의 일부입니다. 이는 함수의 종속성(dependency)을 추적하고, 해당 종속성의 값이 변경될 때마다 해당 함수를 다시 실행하는 과정을 의미합니다.
+반응형 이펙트는 Vue의 반응성 시스템의 일부입니다. 이는 함수의 종속성(dependency)을 추적하고, 해당 종속성의 값이 변경될 때마다 해당 함수를 다시 실행하는 과정을 의미합니다.
 
-`watchEffect()`는 반응형 이팩트를 직접적으로 생성하는 가장 간단한 방법입니다. Vue의 다양한 다른 부분들도 내부적으로 이팩트를 사용합니다. 예를 들어, 컴포넌트 렌더링 업데이트, `computed()`와 `watch()` 등이 있습니다.
+`watchEffect()`는 반응형 이펙트를 직접적으로 생성하는 가장 간단한 방법입니다. Vue의 다양한 다른 부분들도 내부적으로 이펙트를 사용합니다. 예를 들어, 컴포넌트 렌더링 업데이트, `computed()`와 `watch()` 등이 있습니다.
 
-Vue는 반응형 종속성을 반응형 이팩트 내부에서만 추적할 수 있습니다. 만약 속성의 값을 반응형 이팩트 외부에서 읽는다면, 해당 속성이 이후에 변경되어도 Vue는 무엇을 해야 할지 모를 것입니다. 이런 의미에서 속성은 '반응성'을 '잃게' 됩니다.
+Vue는 반응형 종속성을 반응형 이펙트 내부에서만 추적할 수 있습니다. 만약 속성의 값을 반응형 이펙트 외부에서 읽는다면, 해당 속성이 이후에 변경되어도 Vue는 무엇을 해야 할지 모를 것입니다. 이런 의미에서 속성은 '반응성'을 '잃게' 됩니다.
 
-이 용어는 '부작용(side effect)'에서 유래되었습니다. 이팩트 함수를 호출하는 것은 속성 값이 변경되는 것의 부작용입니다.
+이 용어는 '부작용(side effect)'에서 유래되었습니다. 이펙트 함수를 호출하는 것은 속성 값이 변경되는 것의 부작용입니다.
 
 자세한 내용은 다음을 참조하세요:
 - [가이드 - 깊이 있는 반응성](/guide/extras/reactivity-in-depth.html)
@@ -275,7 +275,7 @@ Vue의 문맥에서 반응성은 여러 기능을 설명하는 데 사용됩니�
 
 반응성 시스템은 다양한 방식으로 구현될 수 있습니다. 예를 들어, 코드의 종속성을 정적 분석하여 수행할 수 있습니다. 그러나 Vue는 그러한 형태의 반응성 시스템을 사용하지 않습니다.
 
-대신, Vue의 반응성 시스템은 런타임에서 속성 접근을 추적합니다. 이를 위해 Proxy 래퍼와 getter/setter 함수를 사용합니다.
+대신 Vue의 반응성 시스템은 런타임에 속성 접근을 추적합니다. 이는 Proxy 래퍼와 속성을 위한 [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description)/[setter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set#description) 함수를 사용하여 수행됩니다.
 
 자세한 내용은 다음을 참조하세요:
 - [가이드 - 반응성 기본](/guide/essentials/reactivity-fundamentals.html)

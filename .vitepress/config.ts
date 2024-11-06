@@ -46,7 +46,7 @@ const nav: ThemeConfig['nav'] = [
           { text: '파트너', link: '/partners/' },
           { text: '테마', link: '/ecosystem/themes' },
           { text: 'UI 컴포넌트', link: 'https://ui-libs.vercel.app/' },
-          { text: '자격증', link: 'https://certification.vuejs.org/?ref=vuejs-nav' },
+          { text: '자격증', link: 'https://certificates.dev/vuejs/?ref=vuejs-nav' },
           { text: '일자리', link: 'https://vuejobs.com/?ref=vuejs' },
           { text: 'T-셔츠샵', link: 'https://vue.threadless.com/' }
         ]
@@ -109,6 +109,7 @@ const nav: ThemeConfig['nav'] = [
         link: '/about/community-guide'
       },
       { text: '행동 강령', link: '/about/coc' },
+      { text: '개인정보 보호정책', link: '/about/privacy' },
       {
         text: '다큐멘터리',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
@@ -607,6 +608,14 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
     [
       'script',
+      {},
+      fs.readFileSync(
+        path.resolve(__dirname, './inlined-scripts/uwu.js'),
+        'utf-8'
+      )
+    ],
+    [
+      'script',
       {
         src: 'https://cdn.usefathom.com/script.js',
         'data-site': 'XNOLWPLB',
@@ -664,6 +673,21 @@ export default defineConfigWithTheme<ThemeConfig>({
         repo: 'https://github.com/vuejs-translations/docs-it'
       },
       {
+        link: 'https://fa.vuejs.org',
+        text: 'فارسی',
+        repo: 'https://github.com/vuejs-translations/docs-fa'
+      },
+      {
+        link: 'https://ru.vuejs.org',
+        text: 'Русский',
+        repo: 'https://github.com/translation-gang/docs-ru'
+      },
+      {
+        link: 'https://cs.vuejs.org',
+        text: 'Čeština',
+        repo: 'https://github.com/vuejs-translations/docs-cs'
+      },
+      {
         link: '/translations/',
         text: '번역에 참가하세요!',
         isTranslationsDesc: true
@@ -687,7 +711,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/' },
       { icon: 'twitter', link: 'https://twitter.com/vuejs' },
-      { icon: 'discord', link: 'https://discord.com/invite/HBherRA' }
+      { icon: 'discord', link: 'https://discord.com/invite/vue' }
     ],
 
     editLink: {

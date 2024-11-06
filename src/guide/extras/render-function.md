@@ -263,9 +263,7 @@ Vue 3.4부터 Vue는 더 이상 전역 `JSX` 네임스페이스를 암시적으�
 
 다음에서는 몇 가지 일반적인 템플릿 기능을 렌더 함수 / JSX의 동등한 형태로 구현하는 몇 가지 레시피를 제공합니다.
 
-### `v-if`
-
-{#v-if}
+### `v-if` {#v-if}
 
 템플릿:
 
@@ -369,7 +367,7 @@ h(
       /* ... */
     }
   },
-  'click me'
+  'Click Me'
 )
 ```
 
@@ -379,7 +377,7 @@ h(
     /* ... */
   }}
 >
-  click me
+  Click Me
 </button>
 ```
 
@@ -554,7 +552,8 @@ JSX 동등 코드:
 h(MyComponent, () => 'hello')
 
 // 네임드 슬롯
-// 슬롯 객체가 props로 처리되지 않도록 `null`을 전달해야 함에 유의하세요.
+// 슬롯 객체가 props로 처리되지 않도록
+// `null`을 전달해야 함에 유의하세요.
 h(MyComponent, null, {
   default: () => 'default slot',
   foo: () => h('div', 'foo'),
@@ -577,6 +576,41 @@ JSX 동등 코드:
 ```
 
 슬롯을 함수로 전달하면 자식 컴포넌트에서 지연 호출될 수 있습니다. 이를 통해 슬롯의 종속성은 부모가 아닌 자식에 의해 추적되며, 더 정확하고 효율적인 업데이트가 이루어집니다.
+
+### 범위 지정 슬롯 {#scoped-slots}
+
+부모 컴포넌트에서 범위 지정 슬롯을 렌더링하려면, 자식 컴포넌트에 슬롯이 전달됩니다. 이제 슬롯이 `text`라는 매개변수를 가지고 있음에 주목하세요. 이 슬롯은 자식 컴포넌트에서 호출되며 자식 컴포넌트의 데이터가 부모 컴포넌트로 전달됩니다.
+
+```js
+// 부모 컴포넌트
+export default {
+  setup() {
+    return () => h(MyComp, null, {
+      default: ({ text }) => h('p', text)
+    })
+  }
+}
+```
+
+슬롯이 속성(props)으로 취급되지 않도록 `null`을 전달하는 것을 잊지 마세요.
+
+```js
+// 자식 컴포넌트
+export default {
+  setup(props, { slots }) {
+    const text = ref('hi')
+    return () => h('div', null, slots.default({ text: text.value }))
+  }
+}
+```
+
+JSX와 동등:
+
+```jsx
+<MyComponent>{{
+  default: ({ text }) => <p>{ text }</p>
+}}</MyComponent>
+```
 
 ### 내장 컴포넌트 {#built-in-components}
 
@@ -753,7 +787,7 @@ MyComponent.inheritAttrs = false
 
 ### 함수형 컴포넌트에 대한 타이핑<sup class="vt-badge ts" /> {#typing-functional-components}
 
-기명 또는 익명인 함수형 컴포넌트에 대해 타입을 지정할 수 있습니다. Volar는 SFC 템플릿에서 제대로 입력된 함수형 컴포넌트를 사용할 때 타입 검사를 지원합니다.
+함수형 컴포넌트는 이름이 있는지 또는 익명인지에 따라 타입 지정될 수 있습니다. [Vue - 공식 확장](https://github.com/vuejs/language-tools)은 SFC 템플릿에서 사용할 때 적절히 타입이 지정된 함수형 컴포넌트의 타입 체킹도 지원합니다.
 
 **기명 함수형 컴포넌트**
 

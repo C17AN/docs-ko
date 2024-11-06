@@ -21,9 +21,9 @@ Vue의 커뮤니티는 놀랍도록 빠르게 성장하고 있으며 이 글을 
 - [RFC 토론](https://github.com/vuejs/rfcs)을 팔로우하세요.
 - [공식 블로그](https://blog.vuejs.org/)를 구독하세요.
 
-### 지원 받기 {##get-support}
+### 지원 받기 {#get-support}
 
-- [Discord 채팅](https://chat.vuejs.org/): Vue 개발자들이 실시간으로 만나서 채팅할 수 있는 공간입니다.
+- [Discord 채팅](https://discord.com/invite/vue): Vue 개발자들이 실시간으로 만나서 채팅할 수 있는 공간입니다.
 - [포럼](https://forum.vuejs.org/): Vue와 그 에코시스템에 대해 질문하고 답변을 얻을 수 있는 최고의 장소입니다.
 - [DEV Community](https://dev.to/t/vue): Dev.to에서 Vue 관련 주제를 공유하고 토론합니다.
 - [밋업](https://events.vuejs.org/meetups): 나와 같은 지역 Vue 애호가를 찾고 싶으신가요? 커뮤니티 리더가 되고 싶으신가요? 필요한 도움과 지원이 바로 여기에 있습니다!
@@ -35,7 +35,7 @@ Vue의 커뮤니티는 놀랍도록 빠르게 성장하고 있으며 이 글을 
 - [The Awesome Vue Page](https://github.com/vuejs/awesome-vue): 다른 멋진 사람들이 게시한 다른 멋진 리소스를 확인하세요.
 - [Vue Telescope Explorer](https://vuetelescope.com/explore): Vue로 만든 웹사이트를 탐색하고, 어떤 프레임워크/라이브러리를 사용했는지에 대한 인사이트를 얻을 수 있습니다.
 - [Made with Vue.js](https://madewithvuejs.com/): Vue로 만든 프로젝트 및 라이브러리 쇼케이스.
-- [The "Show and Tell" Subforum](https://forum.vuejs.org/c/show-and-tell): 성장하는 Vue 에코시스템을 위해 다른 사람들이 무엇을 만들었는지 확인할 수 있는 또 다른 좋은 장소입니다.
+- [The "Show and Tell" Subforum](https://github.com/vuejs/core/discussions/categories/show-and-tell): 성장하는 Vue 에코시스템을 위해 다른 사람들이 무엇을 만들었는지 확인할 수 있는 또 다른 좋은 장소입니다.
 
 ## 할 수 있는 일 {#what-you-can-do}
 

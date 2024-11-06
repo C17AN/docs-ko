@@ -4,7 +4,7 @@
 
 - 더 적은 상용구로 더 간결한 코드
 - 순수 TypeScript를 사용하여 props 및 내보낼(emit) 이벤트를 선언하는 기능
-- 더 나은 런타임 성능(템플릿은 중간 프락시 없이 동일한 범위의 렌더 함수로 컴파일됨)
+- 더 나은 런타임 성능(템플릿은 중간 프록시 없이 동일한 범위의 렌더 함수로 컴파일됨)
 - 더 나은 IDE 타입 추론 성능(언어 서버가 코드에서 타입을 추출하는 작업 감소)
 
 ## 기본 문법 {#basic-syntax}
@@ -254,6 +254,23 @@ function inc() {
 }
 ```
 
+:::warning
+`defineModel` prop에 `default` 값을 설정하고, 부모 컴포넌트에서 이 prop에 대한 값을 제공하지 않으면, 부모와 자식 컴포넌트 간의 동기화 문제가 발생할 수 있습니다. 아래 예시에서, 부모의 `myRef`는 값이 정의되지 않았지만(`undefined`) 자식의 `model`은 1 입니다:
+
+```js
+// 자식 컴포넌트:
+const model = defineModel({ default: 1 })
+
+// 부모 컴포넌트:
+const myRef = ref()
+```
+
+```html
+<Child v-model="myRef"></Child>
+```
+
+:::
+
 ### Modifiers and Transformers {#modifiers-and-transformers}
 
 `v-model` 지시문과 함께 사용되는 수정자에 접근하려면, `defineModel()`의 반환 값을 구조 분해하는 방식을 사용할 수 있습니다:
@@ -417,7 +434,7 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 또한 이러한 표현식은 `await` 이후의 현재 컴포넌트 인스턴스 컨텍스트를 유지하는 형식으로 자동 컴파일됩니다.
 
 :::warning 참고
-`async setup()`은 현재 실험적인 기능인 `Suspense`와 함께 사용해야 합니다. 향후 릴리스에서 이를 마무리하고 문서화할 계획입니다. 하지만 지금 궁금한 점은 [테스트](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts)를 참고하여 작동 방식을 확인할 수 있습니다.
+`async setup()`은 현재 실험적인 기능인 [`Suspense`](/guide/built-ins/suspense.html)와 함께 사용해야 합니다. 향후 릴리스에서 이를 마무리하고 문서화할 계획입니다. 하지만 지금 궁금한 점은 [테스트](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts)를 참고하여 작동 방식을 확인할 수 있습니다.
 :::
 
 ## Generics <sup class="vt-badge ts" />  {#generics}

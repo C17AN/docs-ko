@@ -111,7 +111,7 @@ methods: {
 </div>
 
 메서드 핸들러는 이를 트리거하는 네이티브 DOM 이벤트 객체를 자동으로 수신합니다.
-위의 예에서 `event.target.tagName`을 통해 이벤트를 전달하는 엘리먼트에 접근할 수 있습니다.
+위의 예에서 `event.target`을 통해 이벤트를 전달하는 엘리먼트에 접근할 수 있습니다.
 
 <div class="composition-api">
 
@@ -256,8 +256,9 @@ methods: {
 `.capture`, `.once` 및 `.passive` 수식어는 [네이티브 `addEventListener` 메서드의 옵션](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options)을 반영합니다:
 
 ```vue-html
-<!-- 이벤트 리스너를 추가할 때 캡처 모드 사용 -->
-<!-- 내부 엘리먼트에서 클릭 이벤트 핸들러가 실행되기 전에, 여기에서 먼저 핸들러가 실행됩니다. -->
+<!-- 이벤트 리스너를 추가할 때 캡처 모드 사용           -->
+<!-- 내부 엘리먼트에서 클릭 이벤트 핸들러가 실행되기 전에, -->
+<!-- 여기에서 먼저 핸들러가 실행됩니다.                -->
 <div @click.capture="doThis">...</div>
 
 <!-- 클릭 이벤트는 단 한 번만 실행됩니다. -->

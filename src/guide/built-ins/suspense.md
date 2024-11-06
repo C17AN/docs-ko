@@ -5,7 +5,7 @@ outline: deep
 # Suspense {#suspense}
 
 :::warning 실험적인 기능
-`<Suspense>` 는 실험적인 기능입니다. 아직 개발이 완료된 안정된 상태가 아니며 추후 AP가 변경 될 수 있습니다.
+`<Suspense>` 는 실험적인 기능입니다. 아직 개발이 완료된 안정된 상태가 아니며 추후 API가 변경 될 수 있습니다.
 :::
 
 `<Suspense>` 는 컴포넌트 트리에서 비동기 의존성을 조정하기 위한 내장 컴포넌트입니다. 컴포넌트 트리 아래에 여러개의 중첩된 비동기 의존성이 해결될 때까지 기다리는 동안 로드 상태를 렌더링할 수 있습니다.
@@ -132,3 +132,37 @@ resolved 상태에서 `<Suspense>` 는 `#default` 슬롯의 루트 노드가 교
 ```
 
 Vue 라우터에는 동적 import를 사용하여 [컴포넌트를 lazy load하는](https://router.vuejs.kr/guide/advanced/lazy-loading) 기능이 내장되어 있습니다. 이들은 비동기 컴포넌트와 구분되며 현재 `<Suspense>` 를 트리거하지 않습니다. 그러나 여전히 비동기 컴포넌트를 하위 항목으로 가질 수 있으며 일반적인 방식으로 `<Suspense>` 를 트리거할 수 있습니다.
+
+## 중첩 Suspense {#nested-suspense}
+
+여러 비동기 컴포넌트(중첩 또는 레이아웃 기반 라우트에 일반적임)를 다음과 같이 가질 때:
+
+```vue-html
+<Suspense>
+  <component :is="DynamicAsyncOuter">
+    <component :is="DynamicAsyncInner" />
+  </component>
+</Suspense>
+```
+
+`<Suspense>`는 예상대로 트리 아래의 모든 비동기 컴포넌트를 해결하는 경계를 생성합니다. 그러나 `DynamicAsyncOuter`를 변경하면 `<Suspense>`가 올바르게 대기하지만, `DynamicAsyncInner`를 변경하면 중첩된 `DynamicAsyncInner`가 해결될 때까지 이전 노드나 폴백 슬롯 대신 빈 노드를 렌더링합니다.
+
+이 문제를 해결하기 위해서는, 중첩된 컴포넌트를 위한 패치를 처리하기 위해 중첩 suspense를 가질 수 있습니다:
+
+```vue-html
+<Suspense>
+  <component :is="DynamicAsyncOuter">
+    <Suspense suspensible> <!-- 이것 -->
+      <component :is="DynamicAsyncInner" />
+    </Suspense>
+  </component>
+</Suspense>
+```
+
+`suspensible` 속성을 설정하지 않으면, 내부 `<Suspense>`는 부모 `<Suspense>`에 의해 동기 컴포넌트로 취급됩니다. 이는 자체 폴백 슬롯을 가지며, 두 `Dynamic` 컴포넌트가 동시에 변경되면 자식 `<Suspense>`가 자체 종속성 트리를 로드하는 동안 빈 노드와 여러 패치 사이클이 발생할 수 있음을 의미하며, 이는 바람직하지 않을 수 있습니다. `suspensible`이 설정되면 모든 비동기 종속성 처리는 부모 `<Suspense>`에 의해 처리되며(이벤트 발행 포함), 내부 `<Suspense>`는 종속성 해결 및 패칭을 위한 또 다른 경계 역할만 합니다.
+
+---
+
+**관련 문서**
+
+- [`<Suspense>` API 참고](/api/built-in-components#suspense)

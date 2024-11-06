@@ -1,13 +1,12 @@
 # 슬롯 {#slots}
 
-> 이 페이지에서는 [컴포넌트 기초](/guide/essentials/component-basics)를 이미 읽었다고 가정합니다.
-컴포넌트를 처음 사용하는 경우, 그 문서를 먼저 읽으십시오.
+> 이 페이지에서는 [컴포넌트 기초](/guide/essentials/component-basics)를 이미 읽었다고 가정합니다. 컴포넌트를 처음 사용하는 경우, 그 문서를 먼저 읽으십시오.
+
+<VueSchoolLink href="https://vueschool.io/lessons/vue-3-component-slots" title="Free Vue.js Slots Lesson"/>
 
 ## 슬롯 컨텐츠와 아울렛 {#slot-content-and-outlet}
 
-우리는 컴포넌트의 props가 모든 유형의 JavaScript 값을 받을 수 있다는 것을 배웠습니다.
-그러나 템플릿 컨텐츠는 어떻습니까?
-어떤 경우에는 템플릿 조각을 자식 컴포넌트에 전달하고 자식 컴포넌트가 자체 템플릿 내에서 조각을 렌더링하도록 할 수 있습니다.
+우리는 컴포넌트의 props가 모든 유형의 JavaScript 값을 받을 수 있다는 것을 배웠습니다. 그러나 템플릿 컨텐츠는 어떻습니까? 어떤 경우에는 템플릿 조각을 자식 컴포넌트에 전달하고 자식 컴포넌트가 자체 템플릿 내에서 조각을 렌더링하도록 할 수 있습니다.
 
 예를 들어 다음과 같은 사용법을 지원하는 `<FancyButton>` 컴포넌트가 있을 수 있습니다:
 
@@ -29,8 +28,7 @@
 
 ![슬롯 다이어그램](./images/slots.png)
 
-<!-- https://www.figma.com/file/LjKTYVL97Ck6TEmBbstavX/slot -->
-<!-- https://www.figma.com/file/PuKXOMrFPmfnrtMa3tKL5G/slot-(ko-kr) -->
+<!-- https://www.figma.com/file/LjKTYVL97Ck6TEmBbstavX/slot --><!-- https://www.figma.com/file/PuKXOMrFPmfnrtMa3tKL5G/slot-(ko-kr) -->
 
 최종적으로 렌더링된 DOM은:
 
@@ -65,9 +63,7 @@ function FancyButton(slotContent) {
 }
 ```
 
-슬롯 컨텐츠는 텍스트에만 국한되지 않습니다.
-모든 유효한 템플릿 컨텐츠일 수 있습니다.
-예를 들어 여러 엘리먼트 또는 다른 컴포넌트를 전달할 수 있습니다:
+슬롯 컨텐츠는 텍스트에만 국한되지 않습니다. 모든 유효한 템플릿 컨텐츠일 수 있습니다. 예를 들어 여러 엘리먼트 또는 다른 컴포넌트를 전달할 수 있습니다:
 
 ```vue-html
 <FancyButton>
@@ -87,15 +83,13 @@ function FancyButton(slotContent) {
 
 </div>
 
-슬롯을 사용하면 `<FancyButton>`이 더 유연하고 재사용 가능하게 할 수 있습니다.
-이제 내부 내용은 다르지만 모두 동일한 멋진 스타일로 다른 장소에서 사용할 수 있습니다.
+슬롯을 사용하면 `<FancyButton>`이 더 유연하고 재사용 가능하게 할 수 있습니다. 이제 내부 내용은 다르지만 모두 동일한 멋진 스타일로 다른 장소에서 사용할 수 있습니다.
 
 Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot>` 엘리먼트](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot)에서 영감을 얻었고, 나중에 추가 기능에 대해 설명하겠습니다.
 
 ## 렌더링 범위 {#render-scope}
 
-슬롯 컨텐츠는 부모 컴포넌트에 정의되어 있으므로 부모 컴포넌트의 데이터 범위에 접근할 수 있습니다.
-예를 들어:
+슬롯 컨텐츠는 부모 컴포넌트에 정의되어 있으므로 부모 컴포넌트의 데이터 범위에 접근할 수 있습니다. 예를 들어:
 
 ```vue-html
 <span>{{ message }}</span>
@@ -110,8 +104,7 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 
 ## 대체 컨텐츠 {#fallback-content}
 
-슬롯에 대체(fallback) 컨텐츠를 지정하여, 컨텐츠가 제공되지 않을 때만 렌더링되도록 하는 것이 유용한 경우가 있습니다.
-예를 들어 `<SubmitButton>` 컴포넌트에서:
+슬롯에 대체(fallback) 컨텐츠를 지정하여, 컨텐츠가 제공되지 않을 때만 렌더링되도록 하는 것이 유용한 경우가 있습니다. 예를 들어 `<SubmitButton>` 컴포넌트에서:
 
 ```vue-html
 <button type="submit">
@@ -119,8 +112,7 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 </button>
 ```
 
-부모가 슬롯 컨텐츠를 제공하지 않은 경우, "제출" 텍스트가 `<button>` 내부에 렌더링되기를 원할 수 있습니다.
-"제출"을 대체 컨텐츠로 지정하려면 `<slot>` 태그 사이에 배치하면 됩니다:
+부모가 슬롯 컨텐츠를 제공하지 않은 경우, "제출" 텍스트가 `<button>` 내부에 렌더링되기를 원할 수 있습니다. "제출"을 대체 컨텐츠로 지정하려면 `<slot>` 태그 사이에 배치하면 됩니다:
 
 ```vue-html{3}
 <button type="submit">
@@ -167,8 +159,7 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 
 ## 이름이 있는 슬롯 {#named-slots}
 
-단일 컴포넌트에 여러 개의 슬롯 아울렛이 있는 것이 유용한 경우가 있습니다.
-예를 들어 `<BaseLayout>` 템플릿 컴포넌트에서:
+단일 컴포넌트에 여러 개의 슬롯 아울렛이 있는 것이 유용한 경우가 있습니다. 예를 들어 `<BaseLayout>` 템플릿 컴포넌트에서:
 
 ```vue-html
 <div class="container">
@@ -202,8 +193,7 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 
 `name`이 없는 `<slot>` 아울렛은 암시적으로 "default"라는 이름을 갖습니다.
 
-`<BaseLayout>`을 사용하는 부모 컴포넌트에서 각각 다른 슬롯 아울렛를 대상으로 하는 여러 슬롯 컨텐츠 조각을 전달하는 방법이 필요합니다.
-이럴 때 **이름이 있는 슬롯**이 사용됩니다.
+`<BaseLayout>`을 사용하는 부모 컴포넌트에서 각각 다른 슬롯 아울렛를 대상으로 하는 여러 슬롯 컨텐츠 조각을 전달하는 방법이 필요합니다. 이럴 때 **이름이 있는 슬롯**이 사용됩니다.
 
 이름이 있는 슬롯을 전달하려면, `<template>` 엘리먼트와 함께 `v-slot` 디렉티브를 사용하고, 슬롯 이름을 `v-slot`에 인자로 전달해야 합니다:
 
@@ -215,13 +205,11 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 </BaseLayout>
 ```
 
-`v-slot`에는 전용 단축 문법인 `#`가 있으므로 `<template v-slot:header>`는 `<template #header>`로 단축할 수 있습니다.
-이것은 자식 컴포넌트의 'header' 슬롯에서 이 템플릿 조각을 렌더링 한다는 것입니다.
+`v-slot`에는 전용 단축 문법인 `#`가 있으므로 `<template v-slot:header>`는 `<template #header>`로 단축할 수 있습니다. 이것은 자식 컴포넌트의 'header' 슬롯에서 이 템플릿 조각을 렌더링 한다는 것입니다.
 
 ![이름이 있는 슬롯 다이어그램](./images/named-slots.png)
 
-<!-- https://www.figma.com/file/2BhP8gVZevttBu9oUmUUyz/named-slot -->
-<!-- https://www.figma.com/file/KQkd1odvlQeg8gl2r8KeaQ/named-slot-(ko-kr) -->
+<!-- https://www.figma.com/file/2BhP8gVZevttBu9oUmUUyz/named-slot --><!-- https://www.figma.com/file/KQkd1odvlQeg8gl2r8KeaQ/named-slot-(ko-kr) -->
 
 다음은 단축 문법을 사용하여 세 슬롯의 컨텐츠를 모두 `<BaseLayout>`에 전달하는 코드입니다:
 
@@ -242,8 +230,7 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 </BaseLayout>
 ```
 
-컴포넌트가 기본 슬롯과 이름이 있는 슬롯을 모두 허용하는 경우, 모든 최상위 비`<template>` 노드는 기본 슬롯의 컨텐츠로 암시적으로 처리됩니다.
-따라서 위의 내용은 다음과 같이 쓸 수도 있습니다:
+컴포넌트가 기본 슬롯과 이름이 있는 슬롯을 모두 허용하는 경우, 모든 최상위 비`<template>` 노드는 기본 슬롯의 컨텐츠로 암시적으로 처리됩니다. 따라서 위의 내용은 다음과 같이 쓸 수도 있습니다:
 
 ```vue-html
 <BaseLayout>
@@ -261,8 +248,7 @@ Vue 컴포넌트의 슬롯 메커니즘은 [네이티브 웹 컴포넌트 `<slot
 </BaseLayout>
 ```
 
-이제 `<template>` 엘리먼트 내부의 모든 것이 해당 슬롯으로 전달됩니다.
-최종 렌더링된 HTML은 다음과 같습니다:
+이제 `<template>` 엘리먼트 내부의 모든 것이 해당 슬롯으로 전달됩니다. 최종 렌더링된 HTML은 다음과 같습니다:
 
 ```html
 <div class="container">
@@ -310,6 +296,35 @@ function BaseLayout(slots) {
 }
 ```
 
+## 조건부 슬롯 {#conditional-slots}
+
+때때로 슬롯이 있는지 여부에 따라 무언가를 렌더링하고 싶을 수 있습니다.
+
+[$slots](/api/component-instance.html#slots) 속성과 [v-if](/guide/essentials/conditional.html#v-if)를 결합하여 이를 실현할 수 있습니다.
+
+아래 예제에서는 세 가지 조건부 슬롯인 `header`, `footer`, 그리고 `default`를 가진 Card 컴포넌트를 정의합니다.
+header / footer / default가 있을 때 추가 스타일을 제공하기 위해 이를 감싸기를 원합니다:
+
+```vue-html
+<template>
+  <div class="card">
+    <div v-if="$slots.header" class="card-header">
+      <slot name="header" />
+    </div>
+    
+    <div v-if="$slots.default" class="card-content">
+      <slot />
+    </div>
+    
+    <div v-if="$slots.footer" class="card-footer">
+      <slot name="footer" />
+    </div>
+  </div>
+</template>
+```
+
+[온라인 연습장으로 실행하기](https://play.vuejs.org/#eNqVVMtu2zAQ/BWCLZBLIjVoTq4aoA1yaA9t0eaoCy2tJcYUSZCUKyPwv2dJioplOw4C+EDuzM4+ONYT/aZ1tumBLmhhK8O1IxZcr29LyTutjCN3zNRkZVRHLrLcXzz9opRFHvnIxIuDTgvmAG+EFJ4WTnhOCPnQAqvBjHFE2uvbh5Zbgj/XAolwkWN4TM33VI/UalixXvjyo5yeqVVKOpCuyP0ob6utlHL7vUE3U4twkWP4hJq/jiPP4vSSOouNrHiTPVolcclPnl3SSnWaCzC/teNK2pIuSEA8xoRQ/3+GmDM9XKZ41UK1PhF/tIOPlfSPAQtmAyWdMMdMAy7C9/9+wYDnCexU3QtknwH/glWi9z1G2vde1tj2Hi90+yNYhcvmwd4PuHabhvKNeuYu8EuK1rk7M/pLu5+zm5BXyh1uMdnOu3S+95pvSCWYtV9xQcgqaXogj2yu+AqBj1YoZ7NosJLOEq5S9OXtPZtI1gFSppx8engUHs+vVhq9eVhq9ORRrXdpRyseSqfo6SmmnONK6XTw9yis24q448wXSG+0VAb3sSDXeiBoDV6TpWDV+ktENatrdMGCfAoBfL1JYNzzpINJjVFoJ9yKUKho19ul6OFQ6UYPx1rjIpPYeXIc/vXCgjetawzbni0dPnhhJ3T3DMVSruI=)
+
 ## 동적인 슬롯 이름 {#dynamic-slot-names}
 
 [동적인 디렉티브의 인자](/guide/essentials/template-syntax.html#dynamic-arguments)는 `v-slot`에서도 작동하므로 동적 슬롯 이름을 정의할 수 있습니다:
@@ -327,17 +342,15 @@ function BaseLayout(slots) {
 </base-layout>
 ```
 
-표현식에는 디렉티브의 [동적인 인자 문법 제약 조건](/guide/essentials/template-syntax.html#dynamic-argument-syntax-constraints)이 적용됩니다.
+표현식에는 디렉티브의 [동적인 인자 문법 제약 조건](/guide/essentials/template-syntax.md#dynamic-argument-syntax-constraints)이 적용됩니다.
 
 ## 범위가 지정된 슬롯 {#scoped-slots}
 
 [렌더링 범위](#render-scope)에서 논의한 바와 같이 슬롯 컨텐츠는 자식 컴포넌트의 상태에 접근할 수 없습니다.
 
-그러나 슬롯의 컨텐츠가 상위 범위와 하위 범위의 데이터를 모두 사용할 수 있는 경우, 유용할 수 있습니다.
-이를 구현하려면 자식이 데이터를 렌더링할 때 슬롯에 데이터를 전달할 수 있는 방법이 필요합니다.
+그러나 슬롯의 컨텐츠가 상위 범위와 하위 범위의 데이터를 모두 사용할 수 있는 경우, 유용할 수 있습니다. 이를 구현하려면 자식이 데이터를 렌더링할 때 슬롯에 데이터를 전달할 수 있는 방법이 필요합니다.
 
-사실, 우리는 정확히 그렇게 할 수 있습니다.
-props를 컴포넌트에 전달하는 것처럼 속성을 슬롯 아울렛에 전달할 수 있습니다:
+사실, 우리는 정확히 그렇게 할 수 있습니다. props를 컴포넌트에 전달하는 것처럼 속성을 슬롯 아울렛에 전달할 수 있습니다:
 
 ```vue-html
 <!-- <MyComponent> 템플릿 -->
@@ -346,8 +359,7 @@ props를 컴포넌트에 전달하는 것처럼 속성을 슬롯 아울렛에 �
 </div>
 ```
 
-슬롯 props을 받는 것은 단일 기본 슬롯을 사용할 때와 명명된 슬롯을 사용할 때 약간 다릅니다.
-자식 컴포넌트 태그에 직접 `v-slot`을 사용하여 단일 기본 슬롯을 사용하여 props를 수신하는 방법을 먼저 보여줄 것입니다:
+슬롯 props을 받는 것은 단일 기본 슬롯을 사용할 때와 명명된 슬롯을 사용할 때 약간 다릅니다. 자식 컴포넌트 태그에 직접 `v-slot`을 사용하여 단일 기본 슬롯을 사용하여 props를 수신하는 방법을 먼저 보여줄 것입니다:
 
 ```vue-html
 <MyComponent v-slot="slotProps">
@@ -357,8 +369,7 @@ props를 컴포넌트에 전달하는 것처럼 속성을 슬롯 아울렛에 �
 
 ![scoped slots diagram](./images/scoped-slots.svg)
 
-<!-- https://www.figma.com/file/QRneoj8eIdL1kw3WQaaEyc/scoped-slot -->
-<!-- https://www.figma.com/file/4MiKw8LEKRgyECRYxDRQUc/scoped-slot-(ko-kr) -->
+<!-- https://www.figma.com/file/QRneoj8eIdL1kw3WQaaEyc/scoped-slot --><!-- https://www.figma.com/file/4MiKw8LEKRgyECRYxDRQUc/scoped-slot-(ko-kr) -->
 
 <div class="composition-api">
 
@@ -373,8 +384,7 @@ props를 컴포넌트에 전달하는 것처럼 속성을 슬롯 아울렛에 �
 
 자식이 슬롯에 전달한 props는 해당 '`v-slot'` 디렉티브의 값으로 사용할 수 있으며 슬롯 내부의 표현식에서 접근할 수 있습니다.
 
-범위가 지정된 슬롯은 자식 컴포넌트에 전달되는 함수로 생각할 수 있습니다.
-그런 다음 자식 컴포넌트가 이를 호출하고 props를 인자로 전달합니다:
+범위가 지정된 슬롯은 자식 컴포넌트에 전달되는 함수로 생각할 수 있습니다. 그런 다음 자식 컴포넌트가 이를 호출하고 props를 인자로 전달합니다:
 
 ```js
 MyComponent({
@@ -395,8 +405,7 @@ function MyComponent(slots) {
 
 사실 이것은 범위가 지정된 슬롯이 컴파일되는 방법과 수동 [렌더 함수](/guide/extras/render-function)에서 범위가 지정된 슬롯을 사용하는 방법에 매우 유사합니다.
 
-`v-slot="slotProps"`가 슬롯 함수 특징과 어떻게 일치하는지 주목하십시오.
-함수의 인자와 마찬가지로 `v-slot`에서 분해 할당을 사용할 수 있습니다:
+`v-slot="slotProps"`가 슬롯 함수 특징과 어떻게 일치하는지 주목하십시오. 함수의 인자와 마찬가지로 `v-slot`에서 분해 할당을 사용할 수 있습니다:
 
 ```vue-html
 <MyComponent v-slot="{ text, count }">
@@ -406,9 +415,7 @@ function MyComponent(slots) {
 
 ### 이름이 있고 범위가 지정된 슬롯 {#named-scoped-slots}
 
-이름이 있고 범위가 지정된 슬롯은 유사하게 작동합니다.
-슬롯 props는 `v-slot` 디렉티브의 값인 `v-slot:name="slotProps"`로 접근할 수 있습니다.
-단축 문법을 사용하면 다음과 같습니다:
+이름이 있고 범위가 지정된 슬롯은 유사하게 작동합니다. 슬롯 props는 `v-slot` 디렉티브의 값인 `v-slot:name="slotProps"`로 접근할 수 있습니다. 단축 문법을 사용하면 다음과 같습니다:
 
 ```vue-html
 <MyComponent>
@@ -432,51 +439,47 @@ function MyComponent(slots) {
 <slot name="header" message="안녕"></slot>
 ```
 
-슬롯의 `name`은 예약되어 있기 때문에 props에 포함되지 않습니다.
-따라서 `headerProps`의 결과는 `{ message: '안녕' }`이 됩니다.
-
+슬롯의 `name`은 예약되어 있기 때문에 props에 포함되지 않습니다. 따라서 `headerProps`의 결과는 `{ message: '안녕' }`이 됩니다.
 
 명명된 슬롯과 기본 범위 슬롯을 혼합하는 경우, 기본 슬롯에 명시적인 `<template>` 태그를 사용해야 합니다. 컴포넌트에 `v-slot` 지시어를 직접 배치하려고 하면 컴파일 오류가 발생합니다. 이는 기본 슬롯의 prop 범위에 대한 모호함을 피하기 위한 것입니다. 예를 들어
 
 ```vue-html
+<!-- <MyComponent> template -->
+<div>
+  <slot :message="hello"></slot>
+  <slot name="footer" />
+</div>
+```
+
+```vue-html
 <!-- This template won't compile -->
-<template>
-  <MyComponent v-slot="{ message }">
+<MyComponent v-slot="{ message }">
+  <p>{{ message }}</p>
+  <template #footer>
+    <!-- message belongs to the default slot, and is not available here -->
     <p>{{ message }}</p>
-    <template #footer>
-      <!-- message belongs to the default slot, and is not available here -->
-      <p>{{ message }}</p>
-    </template>
-  </MyComponent>
-</template>
+  </template>
+</MyComponent>
 ```
 
 기본 슬롯에 명시적인 `<template>` 태그를 사용하면 다른 슬롯에서 `message` prop을 사용할 수 없음을 명확히 알 수 있습니다:
 
 ```vue-html
-<template>
-  <MyComponent>
-    <!-- Use explicit default slot -->
-    <template #default="{ message }">
-      <p>{{ message }}</p>
-    </template>
+<MyComponent>
+  <!-- Use explicit default slot -->
+  <template #default="{ message }">
+    <p>{{ message }}</p>
+  </template>
 
-    <template #footer>
-      <p>Here's some contact info</p>
-    </template>
-  </MyComponent>
-</template>
+  <template #footer>
+    <p>Here's some contact info</p>
+  </template>
+</MyComponent>
 ```
-
 
 ### 멋진 목록 예제 {#fancy-list-example}
 
-범위가 지정된 슬롯의 좋은 사용 사례가 무엇인지 궁금할 수 있습니다.
-예를 들면 다음과 같습니다.
-아이템 목록을 렌더링하는 `<FancyList>` 컴포넌트를 상상해 봅시다.
-이 컴포넌트는 원격 데이터를 로드하고, 데이터를 사용하여 목록을 표시하거나, 페이지 분할이나 무한 스크롤과 같은 고급 기능을 포함할 수 있습니다.
-그러나 각 아이템의 모양에 유연하게 조정하고, 각 아이템의 스타일을 해당 아이템을 소비하는 부모 컴포넌트에 맡기기를 원합니다.
-따라서 원하는 사용법은 다음과 같을 수 있습니다:
+범위가 지정된 슬롯의 좋은 사용 사례가 무엇인지 궁금할 수 있습니다. 예를 들면 다음과 같습니다. 아이템 목록을 렌더링하는 `<FancyList>` 컴포넌트를 상상해 봅시다. 이 컴포넌트는 원격 데이터를 로드하고, 데이터를 사용하여 목록을 표시하거나, 페이지 분할이나 무한 스크롤과 같은 고급 기능을 포함할 수 있습니다. 그러나 각 아이템의 모양에 유연하게 조정하고, 각 아이템의 스타일을 해당 아이템을 소비하는 부모 컴포넌트에 맡기기를 원합니다. 따라서 원하는 사용법은 다음과 같을 수 있습니다:
 
 ```vue-html
 <FancyList :api-url="url" :per-page="10">
@@ -489,8 +492,7 @@ function MyComponent(slots) {
 </FancyList>
 ```
 
-`<FancyList>` 내부에서 동일한 `<slot>`을 아이템 데이터로 여러 번 렌더링할 수 있습니다.
-(객체를 슬롯 props로 전달하기 위해 `v-bind`를 사용하고 있음을 주목하세요):
+`<FancyList>` 내부에서 동일한 `<slot>`을 아이템 데이터로 여러 번 렌더링할 수 있습니다. (객체를 슬롯 props로 전달하기 위해 `v-bind`를 사용하고 있음을 주목하세요):
 
 ```vue-html
 <ul>
@@ -515,9 +517,7 @@ function MyComponent(slots) {
 
 위에서 논의한 `<FancyList>` 사용 사례는, 재사용 가능한 로직(데이터 가져오기, 페이지 매김 등)과 시각적 출력을 모두 포함하는 동시에, 시각적 출력의 일부를 범위가 지정된 슬롯을 통해 사용될 컴포넌트에 위임합니다.
 
-이 개념을 조금 더 확장하면, 로직을 포함하기만 하고 자체적으로 아무 것도 렌더링하지 않는 컴포넌트를 생각해낼 수 있습니다.
-시각적 출력은 범위가 지정된 슬롯인 사용될 컴포넌트에 완전히 위임됩니다.
-이러한 유형의 컴포넌트를 **렌더리스 컴포넌트**라고 합니다.
+이 개념을 조금 더 확장하면, 로직을 포함하기만 하고 자체적으로 아무 것도 렌더링하지 않는 컴포넌트를 생각해낼 수 있습니다. 시각적 출력은 범위가 지정된 슬롯인 사용될 컴포넌트에 완전히 위임됩니다. 이러한 유형의 컴포넌트를 **렌더리스 컴포넌트**라고 합니다.
 
 렌더리스 컴포넌트의 예제로 현재 마우스 위치를 추적하는 로직을 포함하는 컴포넌트를 살펴봅시다:
 
@@ -538,7 +538,6 @@ function MyComponent(slots) {
 
 </div>
 
-흥미로운 패턴이지만 렌더리스 컴포넌트로 구현할 수 있는 대부분의 케이스는, 추가 컴포넌트 중첩에 의한 오버헤드를 발생시키지 않고 Composition API를 사용하여 보다 효율적인 방식으로 구현할 수 있습니다.
-나중에 [컴포지블](/guide/reusability/composables)로 동일한 마우스 추적 기능을 구현하는 방법을 살펴보겠습니다.
+흥미로운 패턴이지만 렌더리스 컴포넌트로 구현할 수 있는 대부분의 케이스는, 추가 컴포넌트 중첩에 의한 오버헤드를 발생시키지 않고 Composition API를 사용하여 보다 효율적인 방식으로 구현할 수 있습니다. 나중에 [컴포지블](/guide/reusability/composables)로 동일한 마우스 추적 기능을 구현하는 방법을 살펴보겠습니다.
 
 결론적으로, 범위가 지정된 슬롯은 `<FancyList>` 예제와 같이 로직을 포함하고 시각적 출력을 구성해야 할 때에 여전히 유용합니다.
